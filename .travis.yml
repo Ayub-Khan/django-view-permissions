@@ -1,0 +1,36 @@
+sudo: false
+
+language: python
+
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
+
+env:
+  - TOX_ENV=django3
+  - TOX_ENV=django22
+  - TOX_ENV=django21
+  - TOX_ENV=django20
+  - TOX_ENV=django111
+
+matrix:
+  include:
+    - python: 3.6
+      env: TOX_ENV=quality
+  exclude:
+    - python: 3.5
+      env: TOX_ENV=django3
+
+before_install:
+  - pip install -U pip wheel codecov
+
+install:
+  - pip install -r requirements/compatibility.txt
+
+script:
+  - tox -e $TOX_ENV
+
+after_success:
+  - codecov
