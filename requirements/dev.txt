@@ -9,15 +9,15 @@ astroid==2.3.3            # via -r requirements/quality.txt, pylint
 attrs==19.3.0             # via -r requirements/test.txt, pytest
 coverage==5.0.3           # via -r requirements/test.txt, pytest-cov
 distlib==0.3.0            # via -r requirements/compatibility.txt, virtualenv
-django==2.2.10            # via -r requirements/base.txt, -r requirements/test.txt
+django==2.2.11            # via -r requirements/base.txt, -r requirements/test.txt
 filelock==3.0.12          # via -r requirements/compatibility.txt, tox, virtualenv
-importlib-metadata==1.5.0  # via -r requirements/compatibility.txt, -r requirements/test.txt, pluggy, pytest, tox, virtualenv
-importlib-resources==1.0.2  # via -r requirements/compatibility.txt, virtualenv
+importlib-metadata==1.5.0  # via -r requirements/compatibility.txt, -r requirements/test.txt, importlib-resources, pluggy, pytest, tox, virtualenv
+importlib-resources==1.3.1  # via -r requirements/compatibility.txt, virtualenv
 isort==4.3.21             # via -r requirements/quality.txt, pylint
 lazy-object-proxy==1.4.3  # via -r requirements/quality.txt, astroid
 mccabe==0.6.1             # via -r requirements/quality.txt, pylint
 more-itertools==8.2.0     # via -r requirements/test.txt, pytest
-packaging==20.1           # via -r requirements/compatibility.txt, -r requirements/test.txt, pytest, tox
+packaging==20.3           # via -r requirements/compatibility.txt, -r requirements/test.txt, pytest, tox
 pathlib2==2.3.5           # via -r requirements/test.txt, pytest
 pluggy==0.13.1            # via -r requirements/compatibility.txt, -r requirements/test.txt, pytest, tox
 py==1.8.1                 # via -r requirements/compatibility.txt, -r requirements/test.txt, pytest, tox
@@ -26,15 +26,15 @@ pylint==2.4.4             # via -r requirements/quality.txt
 pyparsing==2.4.6          # via -r requirements/compatibility.txt, -r requirements/test.txt, packaging
 pytest-cov==2.8.1         # via -r requirements/test.txt
 pytest-django==3.8.0      # via -r requirements/test.txt
-pytest==5.3.5             # via -r requirements/test.txt, pytest-cov, pytest-django
+pytest==5.4.1             # via -r requirements/test.txt, pytest-cov, pytest-django
 pytz==2019.3              # via -r requirements/base.txt, -r requirements/test.txt, django
 six==1.14.0               # via -r requirements/compatibility.txt, -r requirements/quality.txt, -r requirements/test.txt, astroid, packaging, pathlib2, tox, virtualenv
-sqlparse==0.3.0           # via -r requirements/base.txt, -r requirements/test.txt, django
+sqlparse==0.3.1           # via -r requirements/base.txt, -r requirements/test.txt, django
 toml==0.10.0              # via -r requirements/compatibility.txt, tox
 tox-battery==0.5.2        # via -r requirements/compatibility.txt
 tox==3.14.5               # via -r requirements/compatibility.txt, tox-battery
 typed-ast==1.4.1          # via -r requirements/quality.txt, astroid
-virtualenv==20.0.7        # via -r requirements/compatibility.txt, tox
+virtualenv==20.0.10       # via -r requirements/compatibility.txt, tox
 wcwidth==0.1.8            # via -r requirements/test.txt, pytest
 wrapt==1.11.2             # via -r requirements/quality.txt, astroid
-zipp==1.2.0               # via -r requirements/compatibility.txt, -r requirements/test.txt, importlib-metadata
+zipp==1.2.0               # via -r requirements/compatibility.txt, -r requirements/test.txt, importlib-metadata, importlib-resources
