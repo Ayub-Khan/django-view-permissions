@@ -38,11 +38,11 @@ def is_requirement(line):
 
 
 README = open(
-        os.path.join(os.path.dirname(__file__), 'README.rst')
-    ).read()
+    os.path.join(os.path.dirname(__file__), 'README.rst')
+).read()
 CHANGELOG = open(
-        os.path.join(os.path.dirname(__file__), 'CHANGELOG.rst')
-    ).read()
+    os.path.join(os.path.dirname(__file__), 'CHANGELOG.rst')
+).read()
 
 
 setup(

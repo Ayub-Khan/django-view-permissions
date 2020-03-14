@@ -39,7 +39,7 @@ venv: ## Create a virtual env and install test and production requirements
 
 upgrade: export CUSTOM_COMPILE_COMMAND=make upgrade
 upgrade: ## Upgrade requirement pins.
-	pip3 install -r requirements/pip-tools.txt
+	pip3 install -qr requirements/pip-tools.txt
 	pip-compile requirements/base.in --rebuild --upgrade -o requirements/base.txt
 	pip-compile requirements/test.in --rebuild --upgrade -o requirements/test.txt
 	pip-compile requirements/quality.in --rebuild --upgrade -o requirements/quality.txt

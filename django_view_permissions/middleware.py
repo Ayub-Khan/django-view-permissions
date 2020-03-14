@@ -1,10 +1,10 @@
 """
 Middleware to handle access.
 """
-import logging
+from django.http import Http404
+from django.urls import resolve
 
-
-LOG = logging.getLogger(__name__)
+from django_view_permissions.access import CheckAcess
 
 
 # pylint: disable=too-few-public-methods
@@ -14,15 +14,16 @@ class DjangoViewPermissionsMiddleware:
     """
     def __init__(self, get_response):
         self.get_response = get_response
-        # One-time configuration and initialization.
 
     def __call__(self, request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
+        view_func = resolve(request.path).func
 
+        if hasattr(view_func, 'view_class') and \
+                hasattr(view_func.view_class, 'permissions'):
+            access = CheckAcess(request, view_func.view_class.permissions)
+            if access.have_view_access():
+                response = self.get_response(request)
+                return response
+            raise Http404
         response = self.get_response(request)
-
-        # Code to be executed for each request/response after
-        # the view is called.
-
         return response
