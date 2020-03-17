@@ -14,7 +14,7 @@ help: ## display this help message
 	@echo "Please use \`make <target>' where <target> is one of"
 	@grep '^[a-zA-Z]' $(MAKEFILE_LIST) | sort | awk -F ':.*?## ' 'NF==2 {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
-clean: clean-pyc clean-test ## Remove all build, test, coverage and Python artifacts
+clean: clean-pyc clean-test clean-docs-build ## Remove all build, test, coverage and Python artifacts
 
 clean-pyc: ## Remove Python file artifacts
 	find . -name '*.pyc' -exec rm -f {} +
@@ -29,8 +29,18 @@ clean-test: ## Remove test and coverage artifacts
 	rm -fr .pytest_cache
 	rm -fr *.egg-info/
 
+clean-docs-build: ## Remove docs and build artifacts
+	rm -fr build/
+	rm -fr dist/
+
+docs-requirements: ## Install docs requirements
+	pip3 install -qr requirements/docs.txt
+
 requirements: ## Install development requirements
 	pip3 install -r requirements/dev.txt
+
+build: docs-requirements ## Build the project
+	python setup.py bdist_wheel
 
 venv: ## Create a virtual env and install test and production requirements
 	python3 -m venv $(VENV)
@@ -43,6 +53,7 @@ upgrade: ## Upgrade requirement pins.
 	pip-compile requirements/base.in --rebuild --upgrade -o requirements/base.txt
 	pip-compile requirements/test.in --rebuild --upgrade -o requirements/test.txt
 	pip-compile requirements/quality.in --rebuild --upgrade -o requirements/quality.txt
+	pip-compile requirements/docs.in --rebuild --upgrade -o requirements/docs.txt
 	pip-compile requirements/compatibility.in --rebuild --upgrade -o requirements/compatibility.txt
 	pip-compile requirements/dev.in --rebuild --upgrade -o requirements/dev.txt
 	pip-compile requirements/pip-tools.in --rebuild --upgrade -o requirements/pip-tools.txt
@@ -64,3 +75,6 @@ test-quality: ## Uses pep8 to check the quality of Code
 
 test-python: ## Run python tests
 	python -Wd -m pytest
+
+test-docs: build ## Run docs tests
+	twine check dist/*
