@@ -40,7 +40,7 @@ deploy:
   distributions: sdist bdist_wheel
   on:
     tags: true
-    condition: $TOXENV = django22
+    condition: '$TOXENV = quality'
   user: __token__
   password:
     secure: tGdkCFLWD5ozKUrR+DalntG0d9jr4ak7nXSO947WuWuc1R2OX7mdlEORKdkmbV35Z32QNnzgwZy4CeNZXw8QBzZC3BOFpHtESel+CxskbeFkF93er4ENT72RyTW4mfQc6JtVMoIsRjjX7WpWNo4QooGhpKtqX4riF8rOZgpkbQT7CDB39DDCf/78E8YS4yPLxePYx57T92k4ysFgrQwZqIlb1tA+4s6pCwyK9qq1SKnBws9q23ADi0RKSi0p7ICYNHYJZoUcj2WIiU1c2Smx3AJywNDGMnb7MUaAnJHTouVQIXpxeOGL7ECESKDtaM/p7yQ0iYGAEBlAesB5lmmHh1kSp0JzyPX+ChNXBd+9HFEbupYaQXlI8MzVGDiHo4EbR0Mu7mEOnuKXTeyLd/4oMSecSAuWU65tNAx+immIQsulT4xmZTpRYVXOkl38X6Cr4/OGgR5cSn23AExrtB9dGKTGm4zqj9S0U3qeZy7Qq5ZXke9FTI7P7Px3Y9HyX/ke6Pmo7KIac2mzME9tCx0cDNSj+BTL/frAO/nyCnd2k/peZXbo5Tod4hiZt01xc1B5++XU8yDQjtXwdDWWmHXkS8uTwu8S3SDGa42Snor9s+UDG86aHPq1H7PJPTThMyVTd46uv3+oeg+5kphFGi2kKwB3fKuCSK4tX4lEwA8fu6o=
