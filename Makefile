@@ -3,7 +3,7 @@
 #####################################################################
 .PHONY: clean clean-test clean-pyc help requirements upgrade venv
 .DEFAULT_GOAL := help
-VENV = .venv
+VENV = .env
 
 
 ######################################################################
@@ -32,6 +32,7 @@ clean-test: ## Remove test and coverage artifacts
 clean-docs-build: ## Remove docs and build artifacts
 	rm -fr build/
 	rm -fr dist/
+	rm -rf docs/build/
 
 docs-requirements: ## Install docs requirements
 	pip3 install -qr requirements/docs.txt
@@ -40,10 +41,12 @@ requirements: ## Install development requirements
 	pip3 install -r requirements/dev.txt
 
 build: docs-requirements ## Build the project
+	export DJANGO_SETTINGS_MODULE=test_settings.py
 	python setup.py bdist_wheel
+	cd docs && $(MAKE) html
 
 venv: ## Create a virtual env and install test and production requirements
-	python3 -m venv $(VENV)
+	python3.5 -m venv $(VENV)
 	source $(VENV)/bin/activate
 	pip3 install --upgrade pip
 
