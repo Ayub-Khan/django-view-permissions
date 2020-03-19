@@ -1,20 +1,16 @@
 sudo: false
-
 language: python
-
 python:
 - 3.5
 - 3.6
 - 3.7
 - 3.8
-
 env:
 - TOX_ENV=django3
 - TOX_ENV=django22
 - TOX_ENV=django21
 - TOX_ENV=django20
 - TOX_ENV=django111
-
 matrix:
   include:
   - python: 3.6
@@ -22,25 +18,20 @@ matrix:
   exclude:
   - python: 3.5
     env: TOX_ENV=django3
-
 before_install:
 - pip install -U pip wheel codecov
-
 install:
 - pip install -r requirements/compatibility.txt
-
 script:
 - tox -e $TOX_ENV
-
 after_success:
 - codecov
-
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
+  skip_existing: true
   on:
     tags: true
-    condition: '$TOXENV = quality'
   user: __token__
   password:
-    secure: tGdkCFLWD5ozKUrR+DalntG0d9jr4ak7nXSO947WuWuc1R2OX7mdlEORKdkmbV35Z32QNnzgwZy4CeNZXw8QBzZC3BOFpHtESel+CxskbeFkF93er4ENT72RyTW4mfQc6JtVMoIsRjjX7WpWNo4QooGhpKtqX4riF8rOZgpkbQT7CDB39DDCf/78E8YS4yPLxePYx57T92k4ysFgrQwZqIlb1tA+4s6pCwyK9qq1SKnBws9q23ADi0RKSi0p7ICYNHYJZoUcj2WIiU1c2Smx3AJywNDGMnb7MUaAnJHTouVQIXpxeOGL7ECESKDtaM/p7yQ0iYGAEBlAesB5lmmHh1kSp0JzyPX+ChNXBd+9HFEbupYaQXlI8MzVGDiHo4EbR0Mu7mEOnuKXTeyLd/4oMSecSAuWU65tNAx+immIQsulT4xmZTpRYVXOkl38X6Cr4/OGgR5cSn23AExrtB9dGKTGm4zqj9S0U3qeZy7Qq5ZXke9FTI7P7Px3Y9HyX/ke6Pmo7KIac2mzME9tCx0cDNSj+BTL/frAO/nyCnd2k/peZXbo5Tod4hiZt01xc1B5++XU8yDQjtXwdDWWmHXkS8uTwu8S3SDGa42Snor9s+UDG86aHPq1H7PJPTThMyVTd46uv3+oeg+5kphFGi2kKwB3fKuCSK4tX4lEwA8fu6o=
+    secure: DNu9z3onyhIp6RDS5sZysODhfI7dk2NPHjk6TIq7fRFvMfMhw8AITwP31nIFPtITBu/kUZhUGyxhAXYrSpRFUe+g5okHdsiJrGtLBkK9aw6jg6QCw7INtcM1pQzorJDTXbkUwbdF7agNnJ6WaKiaD1PNV/Kb9sTabEEZ23HAB0bn0wgInECOkzjoN6NdakVUENu/FD34StzHfBX1v0TdOKwLZU/9qnOUHdKZudVrNseRwoQiuAFwMrLa5O2LUqgXA8h3Ba+0m/ArS4nea3AoralnttI/2AQlJfdBzqFe+00pTINtP3OWVye1gyEestWZ3xMiYtF0MjjUTcKJdvek3AevU2niMpvvHos/EjON2O8Ns6ifqX2S52rG0Zd2XN16b/ivmpqWIQfcJqhIgnFgZbTFiWt4AbJ5ktZRq91r3tRW9vWua3R+Uhaw7KTJP8Q/ZJf6s1U+ozVcqOAIoFkY+xueuPBSER6T+LlAXIgGvgsTIyrErn8CN7vVN+Hb68eb8s+iub2+l2OSMlmtPzQstC3gU3ZB+gqKKUWnUpPnlkVsaFTJWsib0WBN0z1gR2FYlp1xADUgoW883mRVXkaEX74vPCneyq08UimLxdiezHoKbZDvgSWQP+aH3AZcy9F8UqM6hBO/yHpIcu+2eoVyQ5P0vGvSuSurB8f5oz1/pT8=
