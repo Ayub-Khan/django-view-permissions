@@ -9,7 +9,13 @@ class BaseTestView(View):
     # pylint: disable=no-self-use, unused-argument
     def get(self, request):
         """
-        Test Get Method
+        Test GET Method
+        """
+        return HttpResponse("ok!")
+
+    def post(self, request):
+        """
+        Test POST Method
         """
         return HttpResponse("ok!")
 

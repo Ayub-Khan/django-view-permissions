@@ -14,6 +14,7 @@ class MiddlewareTestCase(TestCase):
     """
     View Permission Middleware Tests
     """
+
     def setUp(self):
         super(MiddlewareTestCase, self).setUp()
         self.user = User.objects.create_user(username='test')
@@ -96,3 +97,8 @@ class MiddlewareTestCase(TestCase):
             ):
             response = self.client.get(reverse('test-view'))
             self.assertEqual(response.status_code, 404)
+
+    def tearDown(self):
+        super(MiddlewareTestCase, self).tearDown()
+        self.client.logout()
+        self.user.delete()
