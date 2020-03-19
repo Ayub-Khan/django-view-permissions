@@ -1,7 +1,7 @@
 django-view-permissions
 =======================
 
-|pypi-badge| |travis-badge| |codecov-badge| |pyversions-badge|
+|pypi-badge| |travis-badge| |docs-badge| |codecov-badge| |pyversions-badge|
 |license-badge|
 
 django-view-permissions provides ways to control access for Django app views
@@ -122,6 +122,10 @@ Feel free to create git issues in case of queries/issues/enhancements.
 .. |travis-badge| image:: https://travis-ci.com/ayub-khan/django-view-permissions.svg?branch=master
     :target: https://travis-ci.com/ayub-khan/django-view-permissions
     :alt: Travis
+
+.. |docs-badge| image:: https://readthedocs.org/projects/django-view-permissions/badge/?version=latest
+    :target: https://django-view-permissions.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 .. |codecov-badge| image:: http://codecov.io/github/ayub-khan/django-view-permissions/coverage.svg?branch=master
     :target: http://codecov.io/github/ayub-khan/django-view-permissions?branch=master
