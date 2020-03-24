@@ -52,12 +52,20 @@ class CheckAcess:
                 )
             )
         )
+
         allowed_permissions = tuple(
             filter(
                 lambda x: self.request.method in (x[3] if len(x) == 4 else METHODS),
-                attr_based + method_based + class_based
+                attr_based
+            )
+        ) + tuple(
+            filter(
+                lambda x: self.request.method in (x[2] if len(x) == 3 else METHODS),
+                method_based + class_based
             )
         )
+
         if any(allowed_permissions):
             return True
+
         return False
